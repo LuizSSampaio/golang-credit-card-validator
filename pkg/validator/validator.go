@@ -5,12 +5,14 @@ import (
 	"strconv"
 )
 
-// TODO: Add validation for cardNumber
 func Validate(cardNumber string) (bool, error) {
 	sum := 0
 	isSecond := false
 	for _, digit := range cardNumber {
-		digit, _ := strconv.Atoi(fmt.Sprintf("%c", digit))
+		digit, err := strconv.Atoi(fmt.Sprintf("%c", digit))
+		if err != nil {
+			return false, err
+		}
 
 		if isSecond {
 			digit *= 2

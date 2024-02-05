@@ -23,3 +23,11 @@ func TestInvalidCard(t *testing.T) {
 		t.Errorf("An unexpected error ocurred. Error: %s.", err)
 	}
 }
+
+func TestInvalidCardNumber(t *testing.T) {
+	cardNumber := "aaaaaa"
+	_, err := Validate(cardNumber)
+	if err == nil {
+		t.Error("Missing expected invalid card number error")
+	}
+}
